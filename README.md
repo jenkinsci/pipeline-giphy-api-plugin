@@ -20,12 +20,12 @@ Set your api key in credentials section on Jenkins.
 ```
 giphyGetRandomByKeyword
 ```
-###Variables
+### Variables
 - `credentialsId` - The credential you saved to jenkins. See [here](#Configuration).
 - `keyword` - The Keyword to search.
 - `rating` - MPAA rating filters of the images -  `Y`, `G`, `PG`, `PG-13` and `R`.
 - `imageSize` - Image size from giphy. See more details [here](https://developers.giphy.com/docs/#rendition-guide).
-###Example
+### Example
 ##### Declarative pipeline
 ```groovy
 pipeline {
