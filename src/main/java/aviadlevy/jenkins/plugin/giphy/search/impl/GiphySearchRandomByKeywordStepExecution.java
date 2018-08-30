@@ -13,10 +13,23 @@ import java.util.concurrent.ThreadLocalRandom;
  */
 public class GiphySearchRandomByKeywordStepExecution extends GiphySearchStepExecution<String> {
 
+    /**
+     * Constructor for StepExecution
+     *
+     * @param giphyStep the step running
+     * @param context step context
+     */
     public GiphySearchRandomByKeywordStepExecution(GiphySearchStep giphyStep, StepContext context) {
         super(giphyStep, context);
     }
 
+    /**
+     * method that responsible to what should we do with the response from giphy
+     *
+     * @param step the step with all the values from the user
+     * @param json the response from giphy with JSON format
+     * @return the return value of the execution
+     */
     @Override
     protected String handleGiphySearchResponse(GiphySearchStep step,
                                                JSONObject json) {

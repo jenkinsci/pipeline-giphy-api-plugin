@@ -26,19 +26,29 @@ import java.util.List;
 /**
  * @author aviadlevy
  */
-// TODO: add javadoc to all code
 public abstract class GiphySearchStepExecution<T> extends SynchronousNonBlockingStepExecution<T> {
     private static final String DEFAULT_RATING = "g";
     private static final String DEFAULT_IMAGE_SIZE = "downsized_medium";
     private final GiphySearchStep step;
     private final transient JSONParser jsonParser;
 
+    /**
+     * Constructor for StepExecution
+     *
+     * @param giphyStep the step running
+     * @param context step context
+     */
     public GiphySearchStepExecution(GiphySearchStep giphyStep, StepContext context) {
         super(context);
         this.step = giphyStep;
         this.jsonParser = new JSONParser();
     }
 
+    /**
+     * Meat of the execution.
+     *
+     * When this method returns, a step execution is over.
+     */
     @Override
     protected T run() throws Exception {
         validateValues();
@@ -58,6 +68,9 @@ public abstract class GiphySearchStepExecution<T> extends SynchronousNonBlocking
         return handleGiphySearchResponse(step, json);
     }
 
+    /**
+     * validate the required values exists, and set default value to optional in case they don't exists
+     */
     private void validateValues() {
         if (StringUtils.isEmpty(step.getKeyword())) {
             throw new IllegalArgumentException("you must provide keyword");
@@ -72,6 +85,11 @@ public abstract class GiphySearchStepExecution<T> extends SynchronousNonBlocking
         }
     }
 
+    /**
+     * validate the the key is save to Jenkins credentials
+     * @return the apikey if exists
+     * @throws IllegalArgumentException when the key is not saved to credentials
+     */
     private String validateAndGetApiKey() {
         String apiKey;
         try {
@@ -84,9 +102,16 @@ public abstract class GiphySearchStepExecution<T> extends SynchronousNonBlocking
         return apiKey;
     }
 
+    /**
+     * execute the requst to giphy, and parse the response to JSON
+     *
+     * @param uri the uri to request
+     * @param client the http client we use to execute
+     * @return the response from giphy
+     * @throws IOException in case of an error during the execution
+     */
     private String getJsonResponse(URI uri,
                                    CloseableHttpClient client) throws IOException {
-        // TODO: send to giphy with header to return only the selected imageSize
         HttpGet request = new HttpGet(uri);
         HttpResponse response = client.execute(request);
         if (response.getStatusLine()
@@ -96,6 +121,13 @@ public abstract class GiphySearchStepExecution<T> extends SynchronousNonBlocking
         return EntityUtils.toString(response.getEntity());
     }
 
+    /**
+     * build the giphy uri
+     *
+     * @param apiKey the apikey to giphy
+     * @return the uri to execute
+     * @throws URISyntaxException in case the uri is not valid
+     */
     private URI getGiphyUri(String apiKey) throws URISyntaxException {
         URIBuilder uriBuilder = new URIBuilder();
         uriBuilder.setScheme(getScheme());
@@ -107,6 +139,11 @@ public abstract class GiphySearchStepExecution<T> extends SynchronousNonBlocking
         return uriBuilder.build();
     }
 
+    /**
+     * Throw exception by the response status code
+     *
+     * @param statusCode the status code from giphy
+     */
     private void handleNotOKStatusCode(int statusCode) {
         switch (statusCode) {
             case 400:
@@ -143,7 +180,6 @@ public abstract class GiphySearchStepExecution<T> extends SynchronousNonBlocking
 
     /**
      * method that responsible to what should we do with the response from giphy
-     *
      *
      * @param step the step with all the values from the user
      * @param json the response from giphy with JSON format

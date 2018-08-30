@@ -8,16 +8,18 @@ import org.jenkinsci.plugins.workflow.steps.StepDescriptor;
 import org.jenkinsci.plugins.workflow.steps.StepExecution;
 import org.kohsuke.stapler.DataBoundConstructor;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.Set;
-
-import java.io.Serializable;
 
 /**
  * @author aviadlevy
  */
 public class GiphySearchRandomByKeywordStep extends GiphySearchStep implements Serializable {
 
+    /**
+     * Default constructor
+     */
     @DataBoundConstructor
     public GiphySearchRandomByKeywordStep() {
         super();

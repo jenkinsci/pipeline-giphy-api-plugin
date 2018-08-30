@@ -13,6 +13,9 @@ public abstract class GiphySearchStep extends Step {
     private String rating;
     private String imageSize;
 
+    /**
+     * Default constructor
+     */
     public GiphySearchStep() {
     }
 
