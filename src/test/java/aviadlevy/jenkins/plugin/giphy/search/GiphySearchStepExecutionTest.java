@@ -140,6 +140,19 @@ public class GiphySearchStepExecutionTest {
     }
 
     @Test
+    public void whenRatingIsEmpty_dontThrowException() throws Exception {
+        createResponse(MOCK_API_KEY, SUCCESS_RESPONSE, 200);
+        WorkflowJob project = j.createProject(WorkflowJob.class);
+        project.setDefinition(new CpsFlowDefinition(
+                "def res = giphySearchTest(credentialsId: 'testing', " +
+                        "keyword: '" + KEYWORD + "')\n" +
+                        "echo res",
+                true));
+        WorkflowRun build = j.buildAndAssertSuccess(project);
+        j.assertLogContains(SUCCESS_RESPONSE, build);
+    }
+
+    @Test
     public void whenApiKeyIsNotInitializedOnJenkins_throwException() throws Exception {
         WorkflowJob project = j.createProject(WorkflowJob.class);
         project.setDefinition(new CpsFlowDefinition(

@@ -29,6 +29,7 @@ import java.util.List;
 // TODO: add javadoc to all code
 public abstract class GiphySearchStepExecution<T> extends SynchronousNonBlockingStepExecution<T> {
     private static final String DEFAULT_RATING = "g";
+    private static final String DEFAULT_IMAGE_SIZE = "downsized_medium";
     private final GiphySearchStep step;
     private final transient JSONParser jsonParser;
 
@@ -54,7 +55,7 @@ public abstract class GiphySearchStepExecution<T> extends SynchronousNonBlocking
             throw new Exception("giphy respond with empty body");
         }
         JSONObject json = (JSONObject) jsonParser.parse(jsonString);
-        return handleGiphySearchResponse(json);
+        return handleGiphySearchResponse(step, json);
     }
 
     private void validateValues() {
@@ -66,6 +67,8 @@ public abstract class GiphySearchStepExecution<T> extends SynchronousNonBlocking
         }
         if (StringUtils.isEmpty(step.getRating())) {
             step.setRating(DEFAULT_RATING);
+        } if (StringUtils.isEmpty(step.getImageSize())) {
+            step.setImageSize(DEFAULT_IMAGE_SIZE);
         }
     }
 
@@ -83,6 +86,7 @@ public abstract class GiphySearchStepExecution<T> extends SynchronousNonBlocking
 
     private String getJsonResponse(URI uri,
                                    CloseableHttpClient client) throws IOException {
+        // TODO: send to giphy with header to return only the selected imageSize
         HttpGet request = new HttpGet(uri);
         HttpResponse response = client.execute(request);
         if (response.getStatusLine()
@@ -140,10 +144,13 @@ public abstract class GiphySearchStepExecution<T> extends SynchronousNonBlocking
     /**
      * method that responsible to what should we do with the response from giphy
      *
+     *
+     * @param step the step with all the values from the user
      * @param json the response from giphy with JSON format
      * @return the return value of the execution
      */
-    protected abstract T handleGiphySearchResponse(JSONObject json);
+    protected abstract T handleGiphySearchResponse(GiphySearchStep step,
+                                                   JSONObject json);
 
 
     private StringCredentials lookupCredentials(String credentialId) {

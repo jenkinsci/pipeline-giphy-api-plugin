@@ -1,7 +1,6 @@
 package aviadlevy.jenkins.plugin.giphy.search;
 
 import org.jenkinsci.plugins.workflow.steps.Step;
-import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.DataBoundSetter;
 
 /**
@@ -12,6 +11,7 @@ public abstract class GiphySearchStep extends Step {
     private String credentialsId;
     private String keyword;
     private String rating;
+    private String imageSize;
 
     public GiphySearchStep() {
     }
@@ -43,5 +43,12 @@ public abstract class GiphySearchStep extends Step {
         this.rating = rating;
     }
 
+    public String getImageSize() {
+        return imageSize;
+    }
 
+    @DataBoundSetter
+    public void setImageSize(String imageSize) {
+        this.imageSize = imageSize;
+    }
 }
