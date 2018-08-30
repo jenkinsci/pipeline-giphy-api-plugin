@@ -1,15 +1,15 @@
 # Table of Contents
 - [Introduction](#introduction)
-- [Configuration](#Configuration)
-- [Steps](#Steps)
-  - [Giphy Search API Steps](#Giphy-Search-API-Steps)
-    - [Variables](#Variables)
-    - [Example](#Example)
-      - [Declarative pipeline](#Declarative-pipeline)
-      - [Scripted pipeline](#Scripted-pipeline)
-  - [Giphy Translate API Steps](#Giphy-Translate-API-Steps)
-  - [Giphy Trending API Steps](#Giphy-Trending-API-Steps)
-  - [Giphy Random API Steps](#Giphy-Random-API-Steps)
+- [Configuration](#configuration)
+- [Steps](#steps)
+  - [Giphy Search API Steps](#giphy-search-api-steps)
+    - [Variables](#variables)
+    - [Example](#example)
+      - [Declarative pipeline](#declarative-pipeline)
+      - [Scripted pipeline](#scripted-pipeline)
+  - [Giphy Translate API Steps](#giphy-translate-api-steps)
+  - [Giphy Trending API Steps](#giphy-trending-api-steps)
+  - [Giphy Random API Steps](#giphy-random-api-steps)
 # Introduction
 This plugin that expose giphy API within you Jenkins pipeline, both straight forward API and some customs.
 #Configuration
