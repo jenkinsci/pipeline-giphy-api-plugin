@@ -1,18 +1,18 @@
 # Table of Contents
 - [Introduction](#introduction)
-- [Configuration](#Configuration)
-- [Steps](#Steps)
-  - [Giphy Search API Steps](#Giphy-Search-API-Steps)
-    - [Variables](#Variables)
-    - [Example](#Example)
-      - [Declarative pipeline](#Declarative-pipeline)
-      - [Scripted pipeline](#Scripted-pipeline)
-  - [Giphy Translate API Steps](#Giphy-Translate-API-Steps)
-  - [Giphy Trending API Steps](#Giphy-Trending-API-Steps)
-  - [Giphy Random API Steps](#Giphy-Random-API-Steps)
+- [Configuration](#configuration)
+- [Steps](#steps)
+  - [Giphy Search API Steps](#giphy-search-api-steps)
+    - [Variables](#variables)
+    - [Example](#example)
+      - [Declarative pipeline](#declarative-pipeline)
+      - [Scripted pipeline](#scripted-pipeline)
+  - [Giphy Translate API Steps](#giphy-translate-api-steps)
+  - [Giphy Trending API Steps](#giphy-trending-api-steps)
+  - [Giphy Random API Steps](#giphy-random-api-steps)
 # Introduction
 This plugin that expose giphy API within you Jenkins pipeline, both straight forward API and some customs.
-#Configuration
+# Configuration
 Set your api key in credentials section on Jenkins.  
 - ***TODO:*** *elaborate more including screenshots*
 # Steps  
@@ -20,20 +20,20 @@ Set your api key in credentials section on Jenkins.
 ```
 giphyGetRandomByKeyword
 ```
-###Variables
-- `credentialsId` - The credential you saved to jenkins. See [here](#Configuration).
+### Variables
+- `credentialsId` - The credential you saved to jenkins. See [here](#configuration).
 - `keyword` - The Keyword to search.
 - `rating` - MPAA rating filters of the images -  `Y`, `G`, `PG`, `PG-13` and `R`.
 - `imageSize` - Image size from giphy. See more details [here](https://developers.giphy.com/docs/#rendition-guide).
-###Example
-##### Declarative pipeline
+### Example
+#### Declarative pipeline
 ```groovy
 pipeline {
     def gif = giphyGetRandomByKeyword(credentialsId: 'credential-id-from-jenkins', keyword: "keyword", rating: 'g', imageSize: 'downsized_medium')
     echo gif
 }
 ```
-##### Scripted pipeline
+#### Scripted pipeline
 ```groovy
 TODO
 ```
