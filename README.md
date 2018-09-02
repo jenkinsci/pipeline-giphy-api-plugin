@@ -1,3 +1,9 @@
+# Note!
+This plugin is not officially deployed (yet) to the official Jenkins repo.  
+Therefore in order to use it you need to clone this repository, and use maven command:  
+```
+mvn hpi:run
+```
 # Table of Contents
 - [Introduction](#introduction)
 - [Configuration](#configuration)
@@ -18,13 +24,14 @@ Set your api key in credentials section on Jenkins.
 # Steps  
 ### Giphy Search API Steps
 ```
-giphyGetRandomByKeyword
+giphyGetRandomByKeyword - return the url of random gif by the keyword
 ```
 ### Variables
-- `credentialsId` - The credential you saved to jenkins. See [here](#configuration).
-- `keyword` - The Keyword to search.
-- `rating` - MPAA rating filters of the images -  `Y`, `G`, `PG`, `PG-13` and `R`.
-- `imageSize` - Image size from giphy. See more details [here](https://developers.giphy.com/docs/#rendition-guide).
+- `credentialsId` *required* - The credential you saved to jenkins. See [here](#configuration).
+- `keyword` *required* - The Keyword to search.
+- `rating` *default - g* - MPAA rating filters of the images -  `Y`, `G`, `PG`, `PG-13` and `R`.
+- `imageSize` *default - downsized_medium* - Image size from giphy. See more details [here](https://developers.giphy
+.com/docs/#rendition-guide).
 ### Example
 #### Declarative pipeline
 ```groovy
