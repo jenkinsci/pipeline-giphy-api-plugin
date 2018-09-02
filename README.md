@@ -24,7 +24,8 @@ Set your api key in credentials section on Jenkins.
 # Steps  
 ### Giphy Search API Steps
 ```
-giphyGetRandomByKeyword - return the url of random gif by the keyword
+giphySearch - return list of urls matched to the keyword
+giphySearchRandomByKeyword - return the url of random gif by the keyword
 ```
 ### Variables
 - `credentialsId` *required* - The credential you saved to jenkins. See [here](#configuration).
@@ -36,9 +37,29 @@ giphyGetRandomByKeyword - return the url of random gif by the keyword
 #### Declarative pipeline
 ```groovy
 pipeline {
-    def gif = giphyGetRandomByKeyword(credentialsId: 'credential-id-from-jenkins', keyword: "keyword", rating: 'g', imageSize: 'downsized_medium')
-    echo gif
+  agent none
+  stages {
+    stage("foo") {
+      steps {
+          echo giphySearch(credentialsId: 'giphy', keyword: 'success', rating: 'g').toString()
+      }
+    }
+  }
 }
+```
+Output is:
+```
+Started by user unknown or anonymous
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] stage
+[Pipeline] { (foo)
+[Pipeline] giphySearch
+[Pipeline] echo
+[https://media0.giphy.com/media/l3q2BXqLMnzhVF720/giphy.gif, https://media0.giphy.com/media/3o7TKtsBMu4xzIV808/giphy.gif, https://media3.giphy.com/media/LWVn0cCgpRt8Q/giphy.gif, https://media0.giphy.com/media/V80Bk9rW9ZpVC/giphy.gif, https://media1.giphy.com/media/xNBcChLQt7s9a/giphy.gif, https://media1.giphy.com/media/l3q2Z6S6n38zjPswo/giphy.gif, https://media1.giphy.com/media/GS1VR900wmhJ6/giphy.gif, https://media1.giphy.com/media/yGlu7x5jfWGZi/giphy.gif, https://media1.giphy.com/media/2vA33ikUb0Qz6/giphy.gif, https://media1.giphy.com/media/3ov9jSmllAIKuthAe4/giphy.gif, https://media2.giphy.com/media/3ohhwo4PzDFaz2sADu/giphy.gif, https://media2.giphy.com/media/itVfItoFSikqQ/giphy.gif, https://media0.giphy.com/media/T0WzQ475t9Cw/giphy.gif, https://media3.giphy.com/media/nXxOjZrbnbRxS/giphy.gif, https://media3.giphy.com/media/111ebonMs90YLu/giphy.gif, https://media0.giphy.com/media/uudzUtVcsLAoo/giphy.gif, https://media0.giphy.com/media/4xpB3eE00FfBm/giphy-downsized-medium.gif, https://media1.giphy.com/media/OHZ1gSUThmEso/giphy.gif, https://media1.giphy.com/media/zaqclXyLz3Uoo/giphy.gif, https://media2.giphy.com/media/XreQmk7ETCak0/giphy.gif, https://media0.giphy.com/media/KEVNWkmWm6dm8/giphy.gif, https://media2.giphy.com/media/vtVpHbnPi9TLa/giphy.gif, https://media2.giphy.com/media/oGO1MPNUVbbk4/giphy.gif, https://media0.giphy.com/media/26gsobowozGM9umBi/giphy.gif, https://media3.giphy.com/media/aWRWTF27ilPzy/giphy.gif]
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] End of Pipeline
+Finished: SUCCESS
 ```
 #### Scripted pipeline
 ```groovy
