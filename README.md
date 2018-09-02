@@ -11,7 +11,7 @@
   - [Giphy Trending API Steps](#giphy-trending-api-steps)
   - [Giphy Random API Steps](#giphy-random-api-steps)
 # Introduction
-This plugin that expose giphy API within you Jenkins pipeline, both straight forward API and some customs.
+This plugin expose giphy API within your Jenkins pipeline, both straight forward APIs and some customs.
 # Configuration
 Set your api key in credentials section on Jenkins.  
 - ***TODO:*** *elaborate more including screenshots*
