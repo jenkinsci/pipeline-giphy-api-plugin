@@ -40,7 +40,7 @@ public class GiphySearchRandomByKeywordStep extends GiphySearchStep implements S
 
         @Override
         public String getFunctionName() {
-            return "giphyGetRandomByKeyword";
+            return "giphySearchRandomByKeyword";
         }
     }
 }

@@ -63,7 +63,26 @@ Finished: SUCCESS
 ```
 #### Scripted pipeline
 ```groovy
-TODO
+node {
+    def gif = giphySearchRandomByKeyword(credentialsId: 'giphy', keyword: "keyword", rating: 'g', imageSize: 
+    'downsized_medium')
+    echo gif
+}
+```
+Output is:
+```
+Started by user unknown or anonymous
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] node
+Running on Jenkins in D:\GitHub\giphy-plugin\work\jobs\test\workspace
+[Pipeline] {
+[Pipeline] giphySearchRandomByKeyword
+[Pipeline] echo
+https://media3.giphy.com/media/1tykcAaWUvIY/giphy-downsized-medium.gif
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
 ```
 ### Giphy Translate API Steps
 ```
