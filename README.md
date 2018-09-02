@@ -17,10 +17,10 @@ Set your api key in credentials section on Jenkins.
 - ***TODO:*** *elaborate more including screenshots*
 # Steps  
 ### Giphy Search API Steps
-```
-giphySearch - return list of urls matched to the keyword
-giphySearchRandomByKeyword - return the url of random gif by the keyword
-```
+
+`giphySearch` - return list of urls matched to the keyword  
+`giphySearchRandomByKeyword` - return the url of random gif by the keyword. my custom implementation of [Giphy Random API](#giphy-random-api-steps)
+
 ### Variables
 - `credentialsId` *required* - The credential you saved to jenkins. See [here](#configuration).
 - `keyword` *required* - The Keyword to search.
