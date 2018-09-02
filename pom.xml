@@ -9,16 +9,28 @@
         <version>3.4</version>
         <relativePath/>
     </parent>
-    <artifactId>giphy-api-plugin</artifactId>
+
+    <artifactId>pipeline-giphy-api</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>hpi</packaging>
+
     <properties>
         <jenkins.version>2.121.3</jenkins.version>
-        <!--<jenkins.version>2.73.2</jenkins.version>-->
         <java.level>8</java.level>
+        <workflow-step-api.version>2.16</workflow-step-api.version>
+        <workflow-api.version>2.27</workflow-api.version>
+        <scm-api.version>2.2.7</scm-api.version>
+        <structs.version>1.14</structs.version>
+        <plain-credentials.version>1.4</plain-credentials.version>
+        <httpclient.version>4.5.6</httpclient.version>
+        <workflow-aggregator.version>2.5</workflow-aggregator.version>
+        <mockserver.version>3.10.8</mockserver.version>
+        <credentials.version>2.1.7</credentials.version>
+        <json-simple.version>1.1.1</json-simple.version>
     </properties>
+
     <name>Giphy API Plugin</name>
-    <description>Use giphy API in your jenkins pipelines</description>
+    <description>Use Giphy API in your jenkins pipeline</description>
     <licenses>
         <license>
             <name>MIT License</name>
@@ -30,49 +42,44 @@
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-step-api</artifactId>
-            <version>2.16</version>
+            <version>${workflow-step-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-api</artifactId>
-            <version>2.27</version>
+            <version>${workflow-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>scm-api</artifactId>
-            <version>2.2.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>structs</artifactId>
-            <version>1.14</version>
+            <version>${scm-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>plain-credentials</artifactId>
-            <version>1.4</version>
+            <version>${plain-credentials.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.5.6</version>
+            <version>${httpclient.version}</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
-            <version>1.1.1</version>
+            <version>${json-simple.version}</version>
         </dependency>
         <!-- test -->
         <dependency>
             <groupId>org.jenkins-ci.plugins.workflow</groupId>
             <artifactId>workflow-aggregator</artifactId>
-            <version>2.5</version>
+            <version>${workflow-aggregator.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mock-server</groupId>
             <artifactId>mockserver-netty</artifactId>
-            <version>3.10.8</version>
+            <version>${mockserver.version}</version>
             <scope>test</scope>
             <!-- resolve upper bound check -->
             <exclusions>
@@ -89,14 +96,19 @@
         <dependency>
             <groupId>org.mock-server</groupId>
             <artifactId>mockserver-client-java</artifactId>
-            <version>3.10.8</version>
+            <version>${mockserver.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- Upper bound -->
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>credentials</artifactId>
-            <version>2.1.7</version>
+            <version>${credentials.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>structs</artifactId>
+            <version>${structs.version}</version>
         </dependency>
     </dependencies>
 

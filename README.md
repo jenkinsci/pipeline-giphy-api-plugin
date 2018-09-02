@@ -1,9 +1,3 @@
-# Note!
-This plugin is not officially deployed (yet) to the official Jenkins repo.  
-Therefore in order to use it you need to clone this repository, and use maven command:  
-```
-mvn hpi:run
-```
 # Table of Contents
 - [Introduction](#introduction)
 - [Configuration](#configuration)
