@@ -193,7 +193,7 @@ public abstract class GiphySearchStepExecution<T> extends SynchronousNonBlocking
         List<StringCredentials> credentials =
                 com.cloudbees.plugins.credentials.CredentialsProvider.lookupCredentials(
                         StringCredentials.class,
-                        Jenkins.get(),
+                        Jenkins.getInstance(),
                         ACL.SYSTEM,
                         Collections.emptyList());
         CredentialsMatcher matcher = CredentialsMatchers.withId(credentialId);

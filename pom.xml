@@ -13,11 +13,10 @@
     <packaging>hpi</packaging>
 
     <properties>
-        <jenkins.version>2.121.3</jenkins.version>
+        <jenkins.version>2.7.4</jenkins.version>
         <java.level>8</java.level>
         <workflow-step-api.version>2.16</workflow-step-api.version>
         <workflow-api.version>2.27</workflow-api.version>
-        <scm-api.version>2.2.7</scm-api.version>
         <structs.version>1.14</structs.version>
         <plain-credentials.version>1.4</plain-credentials.version>
         <httpclient.version>4.5.6</httpclient.version>
@@ -25,6 +24,7 @@
         <mockserver.version>3.10.8</mockserver.version>
         <credentials.version>2.1.7</credentials.version>
         <json-simple.version>1.1.1</json-simple.version>
+        <scm-api.version>1.3</scm-api.version>
     </properties>
 
     <name>Giphy API Plugin</name>
@@ -43,16 +43,6 @@
             <version>${workflow-step-api.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.jenkins-ci.plugins.workflow</groupId>
-            <artifactId>workflow-api</artifactId>
-            <version>${workflow-api.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>scm-api</artifactId>
-            <version>${scm-api.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
             <artifactId>plain-credentials</artifactId>
             <version>${plain-credentials.version}</version>
@@ -66,6 +56,11 @@
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
             <version>${json-simple.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jenkins-ci.plugins</groupId>
+            <artifactId>credentials</artifactId>
+            <version>${credentials.version}</version>
         </dependency>
         <!-- test -->
         <dependency>
@@ -100,13 +95,9 @@
         <!-- Upper bound -->
         <dependency>
             <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>credentials</artifactId>
-            <version>${credentials.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jenkins-ci.plugins</groupId>
-            <artifactId>structs</artifactId>
-            <version>${structs.version}</version>
+            <artifactId>scm-api</artifactId>
+            <version>${scm-api.version}</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
