@@ -35,7 +35,7 @@ public class GiphySearchRandomByKeywordStepExecution extends GiphySearchStepExec
                                                JSONObject json) {
         JSONArray data = (JSONArray) json.get("data");
         int index = ThreadLocalRandom.current()
-                                     .nextInt(data.size() + 1);
+                                     .nextInt(data.size());
         String imageUrl =
                 (String) ((JSONObject) ((JSONObject) ((JSONObject) data.get(index)).get("images")).get(
                         step.getImageSize())).get("url");
