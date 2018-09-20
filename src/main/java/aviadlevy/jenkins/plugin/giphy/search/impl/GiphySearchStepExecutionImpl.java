@@ -25,7 +25,7 @@ public class GiphySearchStepExecutionImpl extends GiphySearchStepExecution<List<
     }
 
     @Override
-    protected List<String> handleGiphySearchResponse(GiphySearchStep step, JSONObject json) {
+    protected List<String> handleGiphyResponse(GiphySearchStep step, JSONObject json) {
         JSONArray data = (JSONArray) json.get("data");
         return (List<String>) data.stream()
                 .map(d -> ((JSONObject) ((JSONObject) ((JSONObject) d)

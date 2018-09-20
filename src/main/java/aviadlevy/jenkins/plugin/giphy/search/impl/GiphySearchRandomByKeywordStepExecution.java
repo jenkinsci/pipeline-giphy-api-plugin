@@ -31,8 +31,8 @@ public class GiphySearchRandomByKeywordStepExecution extends GiphySearchStepExec
      * @return the return value of the execution
      */
     @Override
-    protected String handleGiphySearchResponse(GiphySearchStep step,
-                                               JSONObject json) {
+    protected String handleGiphyResponse(GiphySearchStep step,
+                                         JSONObject json) {
         JSONArray data = (JSONArray) json.get("data");
         int index = ThreadLocalRandom.current()
                                      .nextInt(data.size());

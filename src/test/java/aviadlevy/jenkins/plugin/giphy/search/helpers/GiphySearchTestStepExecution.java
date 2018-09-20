@@ -28,8 +28,8 @@ public class GiphySearchTestStepExecution extends GiphySearchStepExecution<Strin
     }
 
     @Override
-    protected String handleGiphySearchResponse(GiphySearchStep step,
-                                               JSONObject json) {
+    protected String handleGiphyResponse(GiphySearchStep step,
+                                         JSONObject json) {
         return (String) json.get("message");
     }
 }
