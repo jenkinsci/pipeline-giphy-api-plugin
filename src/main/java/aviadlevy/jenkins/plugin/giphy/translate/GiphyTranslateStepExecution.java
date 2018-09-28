@@ -1,4 +1,4 @@
-package aviadlevy.jenkins.plugin.giphy.search;
+package aviadlevy.jenkins.plugin.giphy.translate;
 
 import aviadlevy.jenkins.plugin.giphy.GiphyStepExecution;
 import org.apache.commons.lang.StringUtils;
@@ -11,42 +11,32 @@ import java.net.URISyntaxException;
 /**
  * @author aviadlevy
  */
-public abstract class GiphySearchStepExecution<T> extends GiphyStepExecution<T, GiphySearchStep> {
-
+public abstract class GiphyTranslateStepExecution<T> extends GiphyStepExecution<T, GiphyTranslateStep> {
     /**
      * Constructor for StepExecution
      *
      * @param giphyStep the step running
-     * @param context step context
+     * @param context   step context
      */
-    public GiphySearchStepExecution(GiphySearchStep giphyStep, StepContext context) {
+    public GiphyTranslateStepExecution(GiphyTranslateStep giphyStep, StepContext context) {
         super(giphyStep, context);
     }
 
-    /**
-     * validate the required values exists, and set default value to optional in case they don't exists
-     */
+    @Override
     protected void validateSpecificStepValues() {
         if (StringUtils.isEmpty(step.getKeyword())) {
             throw new IllegalArgumentException("you must provide keyword");
         }
     }
 
-    /**
-     * build the giphy uri
-     *
-     * @param apiKey the apikey to giphy
-     * @return the uri to execute
-     * @throws URISyntaxException in case the uri is not valid
-     */
+    @Override
     protected URI getGiphyUri(String apiKey) throws URISyntaxException {
         URIBuilder uriBuilder = new URIBuilder();
         uriBuilder.setScheme(getScheme());
         uriBuilder.setHost(getGiphyHost());
-        uriBuilder.setPath("/v1/gifs/search");
+        uriBuilder.setPath("/v1/gifs/random");
         uriBuilder.setParameter("api_key", apiKey);
         uriBuilder.setParameter("q", step.getKeyword());
-        uriBuilder.setParameter("rating", step.getRating());
         return uriBuilder.build();
     }
 }

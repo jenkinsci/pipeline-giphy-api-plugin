@@ -10,6 +10,7 @@ public abstract class GiphyStep extends Step {
 
     private String imageSize;
     private String credentialsId;
+    private String rating;
 
     /**
      * Default constructor
@@ -34,5 +35,14 @@ public abstract class GiphyStep extends Step {
     @DataBoundSetter
     public void setImageSize(String imageSize) {
         this.imageSize = imageSize;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    @DataBoundSetter
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 }

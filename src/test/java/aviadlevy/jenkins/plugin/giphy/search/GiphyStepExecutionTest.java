@@ -33,7 +33,7 @@ import static org.mockserver.model.HttpResponse.response;
 /**
  * @author aviadlevy
  */
-public class GiphySearchStepExecutionTest {
+public class GiphyStepExecutionTest {
 
     private static final String MOCK_API_KEY = "testing-secret";
     private static final String KEYWORD = "test";

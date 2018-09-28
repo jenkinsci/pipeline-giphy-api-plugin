@@ -1,4 +1,4 @@
-package aviadlevy.jenkins.plugin.giphy.search;
+package aviadlevy.jenkins.plugin.giphy.translate;
 
 import aviadlevy.jenkins.plugin.giphy.GiphyStep;
 import org.kohsuke.stapler.DataBoundSetter;
@@ -6,14 +6,14 @@ import org.kohsuke.stapler.DataBoundSetter;
 /**
  * @author aviadlevy
  */
-public abstract class GiphySearchStep extends GiphyStep {
+public abstract class GiphyTranslateStep extends GiphyStep {
 
     private String keyword;
 
     /**
      * Default constructor
      */
-    public GiphySearchStep() {
+    public GiphyTranslateStep() {
     }
 
 
