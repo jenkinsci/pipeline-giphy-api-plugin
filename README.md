@@ -23,7 +23,21 @@ This plugin expose giphy API within your Jenkins pipeline, both straight forward
 For more information look here: [Giphy for Developers](https://developers.giphy.com/docs/#technical-documentation)
 # Configuration
 Set your api key in credentials section on Jenkins.  
-- ***TODO:*** *elaborate more including screenshots*
+1. Choose `Credentials`  
+![credentials-step-1](https://raw.githubusercontent.com/jenkinsci/pipeline-giphy-api-plugin/master/images/credentials-step-1.png)
+2. Choose `System`  
+![credentials-step-2](https://raw.githubusercontent.com/jenkinsci/pipeline-giphy-api-plugin/master/images/credentials-step-2.png)
+3. Choose `Global credentials`  
+![credentials-step-3](https://raw.githubusercontent.com/jenkinsci/pipeline-giphy-api-plugin/master/images/credentials-step-3.png)
+4. Choose `Add Credentials`  
+![credentials-step-4](https://raw.githubusercontent.com/jenkinsci/pipeline-giphy-api-plugin/master/images/credentials-step-4.png)
+5. Fill the form as follow  
+   1. Kind: **Secret text**
+   2. Scope: **Global**
+   3. Secret: **<Your-API-Key-From-Giphy>**
+   4. ID: **The id to use in the pipelines**
+   5. Description: **Write whatever you want**  
+![credentials-step-5](https://raw.githubusercontent.com/jenkinsci/pipeline-giphy-api-plugin/master/images/credentials-step-5.png)
 # Steps  
 ### Giphy Search API Steps
 
