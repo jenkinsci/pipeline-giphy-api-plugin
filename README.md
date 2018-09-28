@@ -3,17 +3,21 @@
 - [Configuration](#configuration)
 - [Steps](#steps)
   - [Giphy Search API Steps](#giphy-search-api-steps)
-    - [Variables](#variables)
-    - [Example](#example)
-      - [Declarative pipeline](#declarative-pipeline)
-      - [Scripted pipeline](#scripted-pipeline)
+    - [Variables](#search-variables)
+    - [Example](#search-example)
+      - [Declarative pipeline](#search-declarative-pipeline)
+      - [Scripted pipeline](#search-scripted-pipeline)
   - [Giphy Translate API Steps](#giphy-translate-api-steps)
-    - [Variables](#variables)
-    - [Example](#example)
-      - [Declarative pipeline](#declarative-pipeline)
-      - [Scripted pipeline](#scripted-pipeline)
+    - [Variables](#translate-variables)
+    - [Example](#translate-example)
+      - [Declarative pipeline](#translate-declarative-pipeline)
+      - [Scripted pipeline](#translate-scripted-pipeline)
   - [Giphy Trending API Steps](#giphy-trending-api-steps)
   - [Giphy Random API Steps](#giphy-random-api-steps)
+    - [Variables](#random-variables)
+    - [Example](#random-example)
+      - [Declarative pipeline](#random-declarative-pipeline)
+      - [Scripted pipeline](#random-scripted-pipeline)
 # Introduction
 This plugin expose giphy API within your Jenkins pipeline, both straight forward APIs and some customs.  
 For more information look here: [Giphy for Developers](https://developers.giphy.com/docs/#technical-documentation)
@@ -26,13 +30,13 @@ Set your api key in credentials section on Jenkins.
 `giphySearch` - return list of urls matched to the keyword  
 `giphySearchRandomByKeyword` - return the url of random gif by the keyword. my custom implementation of [Giphy Random API](#giphy-random-api-steps)
 
-### Variables
+### Search Variables
 - `credentialsId` *required* - The credential you saved to jenkins. See [here](#configuration).
 - `keyword` *required* - The Keyword to search.
 - `rating` *default - g* - MPAA rating filters of the images -  `Y`, `G`, `PG`, `PG-13` and `R`.
 - `imageSize` *default - downsized_medium* - Image size from giphy. See more details [here](https://developers.giphy.com/docs/#rendition-guide).
-### Example
-#### Declarative pipeline
+### Search Example
+#### Search Declarative pipeline
 ```groovy
 pipeline {
   agent none
@@ -59,7 +63,7 @@ Running in Durability level: MAX_SURVIVABILITY
 [Pipeline] End of Pipeline
 Finished: SUCCESS
 ```
-#### Scripted pipeline
+#### Search Scripted pipeline
 ```groovy
 node {
     def gif = giphySearchRandomByKeyword(credentialsId: 'giphy', keyword: "keyword", rating: 'g', imageSize: 
@@ -86,12 +90,12 @@ Finished: SUCCESS
 
 `giphyTranslate` - return url matched to the keyword  
 
-### Variables
+### Translate Variables
 - `credentialsId` *required* - The credential you saved to jenkins. See [here](#configuration).
 - `keyword` *required* - The Keyword to search.
 - `imageSize` *default - downsized_medium* - Image size from giphy. See more details [here](https://developers.giphy.com/docs/#rendition-guide).
-### Example
-#### Declarative pipeline
+### Translate Example
+#### Translate Declarative pipeline
 ```groovy
 pipeline {
   agent none
@@ -118,7 +122,7 @@ https://media2.giphy.com/media/2cZlphZGMk4RW/giphy.gif
 [Pipeline] End of Pipeline
 Finished: SUCCESS
 ```
-#### Scripted pipeline
+#### Translate Scripted pipeline
 ```groovy
 node {
     def gif = giphyTranslate(credentialsId: 'giphy', keyword: "keyword", imageSize: 
@@ -149,12 +153,12 @@ TODO
 
 `giphyRandom` - return random url matched to the keyword  
 
-### Variables
+### Random Variables
 - `credentialsId` *required* - The credential you saved to jenkins. See [here](#configuration).
 - `tag` *required* - The tag to search.
 - `imageSize` *default - downsized_medium* - Image size from giphy. See more details [here](https://developers.giphy.com/docs/#rendition-guide).
-### Example
-#### Declarative pipeline
+### Random Example
+#### Random Declarative pipeline
 ```groovy
 pipeline {
   agent none
@@ -181,7 +185,7 @@ https://media2.giphy.com/media/cN1RJVaYCht96/giphy.gif
 [Pipeline] End of Pipeline
 Finished: SUCCESS
 ```
-#### Scripted pipeline
+#### Random Scripted pipeline
 ```groovy
 node {
     def gif = giphyRandom(credentialsId: 'giphy', tag: "tag", rating: 'pg-13', imageSize: 
