@@ -8,10 +8,15 @@
       - [Declarative pipeline](#declarative-pipeline)
       - [Scripted pipeline](#scripted-pipeline)
   - [Giphy Translate API Steps](#giphy-translate-api-steps)
+    - [Variables](#variables)
+    - [Example](#example)
+      - [Declarative pipeline](#declarative-pipeline)
+      - [Scripted pipeline](#scripted-pipeline)
   - [Giphy Trending API Steps](#giphy-trending-api-steps)
   - [Giphy Random API Steps](#giphy-random-api-steps)
 # Introduction
-This plugin expose giphy API within your Jenkins pipeline, both straight forward APIs and some customs.
+This plugin expose giphy API within your Jenkins pipeline, both straight forward APIs and some customs.  
+For more information look here: [Giphy for Developers](https://developers.giphy.com/docs/#technical-documentation)
 # Configuration
 Set your api key in credentials section on Jenkins.  
 - ***TODO:*** *elaborate more including screenshots*
@@ -78,14 +83,124 @@ https://media3.giphy.com/media/1tykcAaWUvIY/giphy-downsized-medium.gif
 Finished: SUCCESS
 ```
 ### Giphy Translate API Steps
+
+`giphyTranslate` - return url matched to the keyword  
+
+### Variables
+- `credentialsId` *required* - The credential you saved to jenkins. See [here](#configuration).
+- `keyword` *required* - The Keyword to search.
+- `imageSize` *default - downsized_medium* - Image size from giphy. See more details [here](https://developers.giphy.com/docs/#rendition-guide).
+### Example
+#### Declarative pipeline
+```groovy
+pipeline {
+  agent none
+  stages {
+    stage("foo") {
+      steps {
+          echo giphyTranslate(credentialsId: 'giphy', keyword: 'success').toString()
+      }
+    }
+  }
+}
 ```
-TODO
+Output is:
+```
+Started by user admin
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] stage
+[Pipeline] { (foo)
+[Pipeline] giphyTranslate
+[Pipeline] echo
+https://media2.giphy.com/media/2cZlphZGMk4RW/giphy.gif
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+```
+#### Scripted pipeline
+```groovy
+node {
+    def gif = giphyTranslate(credentialsId: 'giphy', keyword: "keyword", imageSize: 
+    'downsized_medium')
+    echo gif
+}
+```
+Output is:
+```
+Started by user admin
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/test
+[Pipeline] {
+[Pipeline] giphyTranslate
+[Pipeline] echo
+https://media1.giphy.com/media/2t9ASqRNjQTNNXv5ob/giphy-downsized-medium.gif
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
 ```
 ### Giphy Trending API Steps
 ```
 TODO
 ```
 ### Giphy Random API Steps
+
+`giphyRandom` - return random url matched to the keyword  
+
+### Variables
+- `credentialsId` *required* - The credential you saved to jenkins. See [here](#configuration).
+- `tag` *required* - The tag to search.
+- `imageSize` *default - downsized_medium* - Image size from giphy. See more details [here](https://developers.giphy.com/docs/#rendition-guide).
+### Example
+#### Declarative pipeline
+```groovy
+pipeline {
+  agent none
+  stages {
+    stage("foo") {
+      steps {
+          echo giphyRandom(credentialsId: 'giphy', tag: 'success').toString()
+      }
+    }
+  }
+}
 ```
-TODO
+Output is:
+```
+Started by user admin
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] stage
+[Pipeline] { (foo)
+[Pipeline] giphyRandom
+[Pipeline] echo
+https://media2.giphy.com/media/cN1RJVaYCht96/giphy.gif
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+```
+#### Scripted pipeline
+```groovy
+node {
+    def gif = giphyRandom(credentialsId: 'giphy', tag: "tag", rating: 'pg-13', imageSize: 
+    'downsized_medium')
+    echo gif
+}
+```
+Output is:
+```
+Started by user admin
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/test
+[Pipeline] {
+[Pipeline] giphyRandom
+[Pipeline] echo
+https://media0.giphy.com/media/6pipAdjEVrVBK/giphy.gif
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
 ```

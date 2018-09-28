@@ -30,6 +30,7 @@ public abstract class GiphyStepExecution<T, S extends GiphyStep> extends Synchro
     private final transient JSONParser jsonParser;
 
     protected static final String DEFAULT_IMAGE_SIZE = "downsized_medium";
+    private static final String DEFAULT_RATING = "g";
 
     /**
      * Constructor for StepExecution
@@ -75,6 +76,9 @@ public abstract class GiphyStepExecution<T, S extends GiphyStep> extends Synchro
             throw new IllegalArgumentException("you must provide credential id");
         } if (StringUtils.isEmpty(step.getImageSize())) {
             step.setImageSize(DEFAULT_IMAGE_SIZE);
+        }
+        if (StringUtils.isEmpty(step.getRating())) {
+            step.setRating(DEFAULT_RATING);
         }
         validateSpecificStepValues();
     }
