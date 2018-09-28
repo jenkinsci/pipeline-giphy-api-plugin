@@ -24,13 +24,13 @@ For more information look here: [Giphy for Developers](https://developers.giphy.
 # Configuration
 Set your api key in credentials section on Jenkins.  
 1. Choose `Credentials`  
-![credentials-step-1](https://raw.githubusercontent.com/jenkinsci/pipeline-giphy-api-plugin/master/images/credentials-step-1.png)
+![credentials-step-1](https://raw.githubusercontent.com/jenkinsci/pipeline-giphy-api-plugin/master/images/credentials-step-1.PNG)
 2. Choose `System`  
-![credentials-step-2](https://raw.githubusercontent.com/jenkinsci/pipeline-giphy-api-plugin/master/images/credentials-step-2.png)
+![credentials-step-2](https://raw.githubusercontent.com/jenkinsci/pipeline-giphy-api-plugin/master/images/credentials-step-2.PNG)
 3. Choose `Global credentials`  
-![credentials-step-3](https://raw.githubusercontent.com/jenkinsci/pipeline-giphy-api-plugin/master/images/credentials-step-3.png)
+![credentials-step-3](https://raw.githubusercontent.com/jenkinsci/pipeline-giphy-api-plugin/master/images/credentials-step-3.PNG)
 4. Choose `Add Credentials`  
-![credentials-step-4](https://raw.githubusercontent.com/jenkinsci/pipeline-giphy-api-plugin/master/images/credentials-step-4.png)
+![credentials-step-4](https://raw.githubusercontent.com/jenkinsci/pipeline-giphy-api-plugin/master/images/credentials-step-4.PNG)
 5. Fill the form as follow  
    1. Kind: **Secret text**
    2. Scope: **Global**
