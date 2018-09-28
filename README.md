@@ -37,7 +37,7 @@ Set your api key in credentials section on Jenkins.
    3. Secret: **<Your-API-Key-From-Giphy>**
    4. ID: **The id to use in the pipelines**
    5. Description: **Write whatever you want**  
-![credentials-step-5](https://raw.githubusercontent.com/jenkinsci/pipeline-giphy-api-plugin/master/images/credentials-step-5.png)
+![credentials-step-5](https://raw.githubusercontent.com/jenkinsci/pipeline-giphy-api-plugin/master/images/credentials-step-5.PNG)
 # Steps  
 ### Giphy Search API Steps
 
