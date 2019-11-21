@@ -1,3 +1,9 @@
+Pipeline Giphy Api plugin
+=========================
+
+[![Jenkins Plugin](https://img.shields.io/jenkins/plugin/v/pipeline-giphy-api.svg)](https://plugins.jenkins.io/pipeline-giphy-api)
+[![Jenkins Plugin Installs](https://img.shields.io/jenkins/plugin/i/pipeline-giphy-api.svg?color=blue)](https://plugins.jenkins.io/pipeline-giphy-api)
+
 # Table of Contents
 - [Introduction](#introduction)
 - [Configuration](#configuration)
