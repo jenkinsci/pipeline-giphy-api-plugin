@@ -19,7 +19,7 @@
         <workflow-api.version>2.27</workflow-api.version>
         <structs.version>1.14</structs.version>
         <plain-credentials.version>1.4</plain-credentials.version>
-        <httpclient.version>4.5.6</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
         <workflow-aggregator.version>2.5</workflow-aggregator.version>
         <mockserver.version>3.10.8</mockserver.version>
         <credentials.version>2.1.7</credentials.version>
